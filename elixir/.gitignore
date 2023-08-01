@@ -1,0 +1,9 @@
+.exercism
+HELP.md
+HINTS.md
+README.md
+.formatter.exs
+*/.gitignore
+*/test/test_helper.exs
+log
+

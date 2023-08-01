@@ -1,0 +1,7 @@
+.exercism
+__pycache__
+HELP.md
+HINTS.md
+README.md
+*/.pylintrc
+*/.pytest.ini

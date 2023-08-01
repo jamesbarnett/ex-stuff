@@ -1,0 +1,10 @@
+.exercism
+CMakeCache.txt
+CMakeFiles
+HELP.md
+README.md
+Makefile
+cmake_install.cmake
+log
+*.log
+test

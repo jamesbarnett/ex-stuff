@@ -1,0 +1,16 @@
+[pylint]
+max-line-length = 120
+ignore-patterns = .svn, CVS, .bzr, .hg, .git, __pycache__
+extension-pkg-whitelist = numpy
+
+[pylint.messages control]
+disable = C0330, C0326, C0103, R0903
+
+[pylint.design]
+min-public-methods = 0
+max-args = 10
+max-attributes = 10
+
+[pylint.spelling]
+spelling-dict = en_US
+
