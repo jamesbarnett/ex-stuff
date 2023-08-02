@@ -2,11 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cmath>
-#include <cstdlib>
 #include <map>
-#include <list>
-#include <algorithm>
-#include <string>
 
 namespace say {
   const std::map<int, std::string> _names{
@@ -43,64 +39,16 @@ namespace say {
     { 1000000, "million " },
     { 1000000000, "billion " }};
 
-  // std::string in_english(unsigned long long x) {
-  //   if (static_cast<long long>(x) == -1) throw std::domain_error("you fucked up!");
-  //   if (x >= 1000ULL * 1000ULL * 1000ULL * 1000ULL) throw std::domain_error("too big, fucker!");
-  //
-  //   int e = (power(x) / 3) * 3;
-  //   return under_n(e, x);
-  // }
+  std::string in_english(unsigned long long x) {
+    if (static_cast<long long>(x) == -1) throw std::domain_error("you fucked up!");
+    if (x >= 1000ULL * 1000ULL * 1000ULL * 1000ULL) throw std::domain_error("too big, fucker!");
+
+    int e = (power(x) / 3) * 3;
+    return under_n(e, x);
+  }
 
   unsigned long long pow_(unsigned long long x) {
     return static_cast<unsigned long long>(std::pow(10ULL, x));
-  }
-
-  std::string in_english(unsigned long long x) {
-    char buffer[16];
-    snprintf(buffer, 16, "%lld", x);
-    std::string num(buffer);
-
-    std::string str("");
-    std::list<std::string> words;
-
-    std::reverse(num.begin(), num.end());
-
-    for (size_t i = 0; i < num.size(); ++i) {
-      if (i % 3 == 0) {
-        if (i >= 3) {
-          words.push_front(_names.at(pow_(i)));  
-        }
-        words.push_front(_names.at(num[i] - '0'));
-      } else if (i % 3 == 1) {
-        auto x = (num[i] - '0');
-        if (x == 1) {
-          words.pop_front();
-          words.push_front(_names.at((num[i-1] - '0') + 10));
-        } else {
-          words.push_front("-");
-          words.push_front(_names.at((num[i] - '0') * 10));
-        }
-      } else if (i % 3 == 2) {
-        if ((num[i] - '0') > 0) {
-          words.push_front(_names.at(100));
-          words.push_front(_names.at(num[i] - '0')); 
-        }
-      }
-    }
-
-    for (const auto& w : words) {
-      if (str != "" || str == "-") {
-        str.append(" ");
-      }
-      str.append(w);
-    }
-
-    return str;
-  }
-
-  std::string dashit(std::string str) {
-
-    return std::string("");
   }
 
   std::string under_n(int e, unsigned long long x) {
@@ -202,5 +150,5 @@ namespace say {
 
     return str;
   }
-}  // namespace say
+}
 
