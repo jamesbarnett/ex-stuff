@@ -3,7 +3,6 @@ defmodule LibraryFeesTest do
 
   describe "datetime_from_string/1" do
     @tag task_id: 1
-    @tag :focus
     test "returns NaiveDateTime" do
       result = LibraryFees.datetime_from_string("2021-01-01T12:00:00Z")
       assert result.__struct__ == NaiveDateTime
