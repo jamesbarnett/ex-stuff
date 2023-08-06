@@ -1,10 +1,3 @@
-=begin
-Write your code for the 'Scrabble Score' exercise in this file. Make the tests in
-`scrabble_score_test.rb` pass.
-
-To get started with TDD, see the `README.md` file in your
-`ruby/scrabble-score` directory.
-=end
 class Scrabble
   ScoreTable = {
     "AEIOULNRST" => 1,
@@ -17,16 +10,14 @@ class Scrabble
   }
 
   def initialize(word)
-    @word = word 
+    @word = word.upcase
   end
 
   def score
-    points = 0
-    @word.each_char do |c|
-      points += score_letter(c.upcase)
-    end
-    points
+    reduce_chars {|c| score_letter c}
   end
+
+  private
 
   def score_letter(c)
     ScoreTable.keys.each do |key|
@@ -34,5 +25,14 @@ class Scrabble
     end
 
     0
+  end
+
+  def reduce_chars
+    acc = 0
+    @word.each_char do |c|
+      acc += yield c
+    end
+
+    acc
   end
 end
