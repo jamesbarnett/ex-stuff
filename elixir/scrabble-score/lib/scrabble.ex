@@ -12,7 +12,7 @@ defmodule Scrabble do
     |> Enum.reduce(0, fn x, acc -> score_letter(x) + acc end)
   end
 
-  def score_letter(c) do
+  defp score_letter(c) do
     result = cond do
       c in ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"] -> 1
       c in ["D", "G"] -> 2
