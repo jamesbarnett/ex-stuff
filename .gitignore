@@ -11,3 +11,5 @@ elm-stuff
 *.mli
 *.old
 gleam/*/.gitignore
+*.busted
+
