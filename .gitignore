@@ -1,0 +1,15 @@
+HELP.md
+HINTS.md
+README.md
+.exercism
+_build
+*.beam
+*.ez
+erl_crash.dump
+elm-stuff
+*.app.src
+*.mli
+*.old
+gleam/*/.gitignore
+*.busted
+
